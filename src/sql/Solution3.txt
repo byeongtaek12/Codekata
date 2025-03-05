@@ -1,0 +1,7 @@
+package sql;
+
+public class Solution3 {
+    SELECT COUNT(DISTINCT NAME) AS NAME
+    FROM ANIMAL_INS
+    WHERE NAME IS NOT NULL
+}

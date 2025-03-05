@@ -1,0 +1,7 @@
+package sql;
+
+public class Solution2 {
+    SELECT NAME, DATETIME
+    FROM ANIMAL_INS
+    ORDER BY ANIMAL_ID DESC;
+}

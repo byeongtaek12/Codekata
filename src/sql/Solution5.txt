@@ -1,0 +1,6 @@
+package sql;
+
+public class Solution5 {
+    SELECT COUNT(ANIMAL_ID) AS COUNT
+    FROM ANIMAL_INS
+}
