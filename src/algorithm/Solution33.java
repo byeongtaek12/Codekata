@@ -14,7 +14,6 @@ class Solution33 {
         answer=sum;
         return answer;
     }
-
     public int count(int x) {
         int count = 0;
         for (int i = 1; i<=x; i++) {
