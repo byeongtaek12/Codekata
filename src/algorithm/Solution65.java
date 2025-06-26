@@ -1,40 +1,31 @@
 class Solution65 {
 	public int solution(String s) {
 		int answer = 0;
-		int xcount = 1;
-		int notxcount = 0;
-		char [] s1 = s.toCharArray();
-		char x = s1[0];
-		for (int i = 0; i<s1.length-1; i++) {
-			if (s1[i] != x){
-				continue;
+		int same = 0;
+		int diff = 0;
+		char[] chars = s.toCharArray();
+		char x = chars[0];
+
+		for (int i = 0; i < chars.length; i++) {
+			if (chars[i] == x) {
+				same++;
+			} else {
+				diff++;
 			}
-			for (int j= i + 1; j<s1.length; j++) {
-				if (s1[i]!=s1[j]) {
-					notxcount++;
-					if (xcount == notxcount) {
-						answer++;
-						if (s1[j+1] != s1.length+1) {
-							x = s1[j+1];
-						}
-						break;
-					}else {
-						if (s1[i+1]!=x) {
-							notxcount++;
-						}else {
-							xcount++;
-						}
-					}
-				}else {
-					if (s1[i]==x) {
-						xcount++;
-					}else {
-						notxcount++;
-					}
+
+			if (same == diff) {
+				answer++;
+				if (i + 1 < chars.length) {
+					x = chars[i + 1];
 				}
+				same = 0;
+				diff = 0;
 			}
 		}
 
+		if (same != diff) {
+			answer++;
+		}
 
 		return answer;
 	}
