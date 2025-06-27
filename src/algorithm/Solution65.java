@@ -1,3 +1,5 @@
+package algorithm;
+
 class Solution65 {
 	public int solution(String s) {
 		int answer = 0;
