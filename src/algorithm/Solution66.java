@@ -4,28 +4,28 @@ import java.util.*;
 
 class Solution66 {
 	public int[] solution(String[] keymap, String[] targets) {
-		int[] answer = new int [targets.length];
-		int key1 = 0;
-		int key2 = 0;
-		List<char []> charT = new ArrayList<>();
-		List<char []> charK = new ArrayList<>();
+		Map<Character, Integer> keyPressCount = new HashMap<>();
 
-
-		for (String target : targets) {
-			charT.add(target.toCharArray());
-		}
 		for (String key : keymap) {
-			charK.add(key.toCharArray());
+			for (int i = 0; i < key.length(); i++) {
+				char c = key.charAt(i);
+				keyPressCount.put(c, Math.min(keyPressCount.getOrDefault(c, Integer.MAX_VALUE), i + 1));
+			}
 		}
 
-		for (int i = 0; i<charT[0].length; i++) {
-			for (int j = 0; j<charK[0].length; j++) {
-				for (int k = 0; k<charK[1].length; k++) {
-					if (charT[0][i] == charK[0][j]) {
+		int [] answer = new int [targets.length];
 
-					}
+		for (int i = 0; i < targets.length; i++) {
+			int total = 0;
+			for (char c : targets[i].toCharArray()) {
+				if (!keyPressCount.containsKey(c)) {
+					total = -1;
+					break;
+				} else {
+					total += keyPressCount.get(c);
 				}
 			}
+			answer[i] = total;
 		}
 
 		return answer;
